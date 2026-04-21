@@ -32,3 +32,12 @@ export const getTheme = () => {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const saveWatchlist = (watchlist: import("@/types").IMovie[]): void => {
+  localStorage.setItem("watchlist", JSON.stringify(watchlist));
+};
+
+export const getWatchlist = (): import("@/types").IMovie[] => {
+  const data = localStorage.getItem("watchlist");
+  return data ? (JSON.parse(data) as import("@/types").IMovie[]) : [];
+};

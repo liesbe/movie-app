@@ -3,7 +3,7 @@ import { BsMoonStarsFill } from "react-icons/bs";
 import { GoDeviceDesktop } from "react-icons/go";
 import { AiOutlineHome } from "react-icons/ai";
 import { TbMovie } from "react-icons/tb";
-import { MdOutlineLiveTv } from "react-icons/md";
+import { MdOutlineLiveTv, MdOutlineBookmarkBorder } from "react-icons/md";
 
 import { ITheme, INavLink } from "../types";
 
@@ -22,6 +22,11 @@ export const navLinks: INavLink[] = [
     title: "tv series",
     path: "/tv",
     icon: MdOutlineLiveTv,
+  },
+  {
+    title: "watchlist",
+    path: "/watchlist",
+    icon: MdOutlineBookmarkBorder,
   },
 ];
 
