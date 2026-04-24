@@ -24,7 +24,7 @@ const SideBar: React.FC = () => {
     setShowSidebar(false);
   }, [setShowSidebar]);
 
-  const { ref } = useOnClickOutside({
+  const { ref } = useOnClickOutside<HTMLDivElement>({
     action: closeSideBar,
     enable: showSidebar
   });

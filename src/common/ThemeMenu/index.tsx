@@ -13,7 +13,7 @@ const ThemeMenu = () => {
     useTheme();
   const { zoomIn } = useMotion();
 
-  const { ref } = useOnClickOutside({
+  const { ref } = useOnClickOutside<HTMLUListElement>({
     action: closeMenu
   });
   

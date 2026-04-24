@@ -17,7 +17,7 @@ const MovieCard = ({
   const { poster_path, original_title: title, name, id } = movie;
   const isMobile = useMediaQuery("(max-width: 380px)");
   const { addToWatchlist, removeFromWatchlist, isInWatchlist } = useWatchlist();
-  const inList = isInWatchlist(String(id));
+  const inList = isInWatchlist(id);
   return (
     <>
       <Link
@@ -43,7 +43,7 @@ const MovieCard = ({
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              inList ? removeFromWatchlist(String(id)) : addToWatchlist(movie);
+              inList ? removeFromWatchlist(id) : addToWatchlist(movie);
             }}
             className="absolute top-2 right-2 text-[22px] text-white hover:text-yellow-400 transition-colors duration-200"
           >

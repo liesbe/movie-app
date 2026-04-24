@@ -6,12 +6,12 @@ interface IUseOutsideClick {
   enable?: boolean;
 }
 
-export const useOnClickOutside = ({
+export const useOnClickOutside = <T extends HTMLElement = HTMLElement>({
   action,
   listenCapturing = true,
   enable = true,
 }: IUseOutsideClick) => {
-  const ref = useRef<any>(null);
+  const ref = useRef<T | null>(null);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {

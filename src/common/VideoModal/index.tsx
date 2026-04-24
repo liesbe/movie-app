@@ -11,7 +11,7 @@ import { useOnKeyPress } from "@/hooks/useOnKeyPress";
 const VideoModal = () => {
   const { videoId, closeModal, isModalOpen } = useGlobalContext();
   const { zoomIn } = useMotion();
-  const { ref } = useOnClickOutside({
+  const { ref } = useOnClickOutside<HTMLDivElement>({
     action: closeModal,
     enable: isModalOpen,
   });

@@ -5,8 +5,8 @@ import { saveWatchlist, getWatchlist } from "@/utils/helper";
 interface WatchlistContextType {
   watchlist: IMovie[];
   addToWatchlist: (movie: IMovie) => void;
-  removeFromWatchlist: (id: string) => void;
-  isInWatchlist: (id: string) => boolean;
+  removeFromWatchlist: (id: number) => void;
+  isInWatchlist: (id: number) => boolean;
 }
 
 const WatchlistContext = createContext<WatchlistContextType | null>(null);
@@ -23,7 +23,7 @@ export const WatchlistProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
-  const removeFromWatchlist = useCallback((id: string) => {
+  const removeFromWatchlist = useCallback((id: number) => {
     setWatchlist((prev) => {
       const next = prev.filter((m) => m.id !== id);
       saveWatchlist(next);
@@ -32,7 +32,7 @@ export const WatchlistProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const isInWatchlist = useCallback(
-    (id: string) => watchlist.some((m) => m.id === id),
+    (id: number) => watchlist.some((m) => m.id === id),
     [watchlist]
   );
 
