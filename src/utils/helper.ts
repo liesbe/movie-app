@@ -41,3 +41,12 @@ export const getWatchlist = (): import("@/types").IMovie[] => {
   const data = localStorage.getItem("watchlist");
   return data ? (JSON.parse(data) as import("@/types").IMovie[]) : [];
 };
+
+export const saveRatings = (ratings: Record<number, number>): void => {
+  localStorage.setItem("ratings", JSON.stringify(ratings));
+};
+
+export const getRatings = (): Record<number, number> => {
+  const data = localStorage.getItem("ratings");
+  return data ? (JSON.parse(data) as Record<number, number>) : {};
+};

@@ -3,6 +3,7 @@ import { FaYoutube } from "react-icons/fa";
 import { MdBookmark, MdBookmarkBorder } from "react-icons/md";
 
 import Image from "../Image";
+import StarRating from "../StarRating";
 import { IMovie } from "@/types";
 import { useMediaQuery } from "usehooks-ts";
 import { useWatchlist } from "@/context/watchlistContext";
@@ -55,6 +56,9 @@ const MovieCard = ({
       <h4 className="dark:text-gray-300 text-center cursor-default sm:text-base xs:text-[14.75px] text-[14px] font-medium ">
         {(title?.length > 50 ? title.split(":")[0] : title) || name}
       </h4>
+      <div className="flex justify-center">
+        <StarRating movieId={id} size="sm" readOnly />
+      </div>
     </>
   );
 };

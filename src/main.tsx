@@ -8,6 +8,7 @@ import { tmdbApi } from "@/services/TMDB";
 import GlobalContextProvider from "@/context/globalContext";
 import ThemeProvider from "@/context/themeContext";
 import { WatchlistProvider } from "@/context/watchlistContext";
+import { RatingProvider } from "@/context/ratingContext";
 import App from "./App";
 import "./index.css";
 
@@ -17,11 +18,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <ApiProvider api={tmdbApi}>
         <ThemeProvider>
           <GlobalContextProvider>
-            <WatchlistProvider>
-              <LazyMotion features={domAnimation}>
-                <App />
-              </LazyMotion>
-            </WatchlistProvider>
+            <RatingProvider>
+              <WatchlistProvider>
+                <LazyMotion features={domAnimation}>
+                  <App />
+                </LazyMotion>
+              </WatchlistProvider>
+            </RatingProvider>
           </GlobalContextProvider>
         </ThemeProvider>
       </ApiProvider>
