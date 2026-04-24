@@ -10,44 +10,42 @@ interface StarRatingProps {
 }
 
 const StarRating = ({ movieId, size = "md", readOnly = false }: StarRatingProps) => {
-  const { getRating, setRating, removeRating } = useRating();
+  const { getRating, addRating, removeRating } = useRating();
   const [hovered, setHovered] = useState<number | null>(null);
   const saved = getRating(movieId);
+  const displayed = hovered ?? saved ?? 0;
 
   if (readOnly && saved === undefined) return null;
 
-  const active = hovered ?? saved ?? 0;
-  const starSize = size === "sm" ? "text-[11px]" : "text-[22px]";
+  const starSize = size === "sm" ? "text-[12px]" : "text-[22px]";
 
   const handleClick = (star: number) => {
-    if (star === saved) {
+    if (readOnly) return;
+    if (saved === star) {
       removeRating(movieId);
     } else {
-      setRating(movieId, star);
+      addRating(movieId, star);
     }
   };
 
   return (
-    <div
-      className={cn("flex flex-row gap-[2px] items-center", size === "md" && "my-1")}
-      onMouseLeave={() => !readOnly && setHovered(null)}
-    >
+    <div className="flex gap-[2px]">
       {[1, 2, 3, 4, 5].map((star) => (
         <button
           key={star}
           type="button"
           aria-label={`Rate ${star} star${star > 1 ? "s" : ""}`}
-          disabled={readOnly}
-          onClick={() => !readOnly && handleClick(star)}
+          onClick={() => handleClick(star)}
           onMouseEnter={() => !readOnly && setHovered(star)}
+          onMouseLeave={() => !readOnly && setHovered(null)}
           className={cn(
-            starSize,
-            "transition-colors duration-150",
-            readOnly ? "cursor-default" : "cursor-pointer",
-            star <= active ? "text-yellow-400" : "text-gray-400 dark:text-gray-600"
+            "text-yellow-400 transition-transform duration-100",
+            !readOnly && "hover:scale-125 cursor-pointer",
+            readOnly && "cursor-default",
+            starSize
           )}
         >
-          {star <= active ? <FaStar /> : <FaRegStar />}
+          {star <= displayed ? <FaStar /> : <FaRegStar />}
         </button>
       ))}
     </div>

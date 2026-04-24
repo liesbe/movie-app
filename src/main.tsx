@@ -18,13 +18,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <ApiProvider api={tmdbApi}>
         <ThemeProvider>
           <GlobalContextProvider>
-            <RatingProvider>
-              <WatchlistProvider>
+            <WatchlistProvider>
+              <RatingProvider>
                 <LazyMotion features={domAnimation}>
                   <App />
                 </LazyMotion>
-              </WatchlistProvider>
-            </RatingProvider>
+              </RatingProvider>
+            </WatchlistProvider>
           </GlobalContextProvider>
         </ThemeProvider>
       </ApiProvider>

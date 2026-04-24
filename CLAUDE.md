@@ -43,13 +43,3 @@
 ## Linting
 - Run `./node_modules/.bin/eslint src/` before committing
 - Zero lint warnings/errors expected on clean code
-
-## Rating Feature
-- Users can rate any movie 1–5 stars
-- Ratings are persisted in `localStorage` under the key `"ratings"` as `Record<number, number>` (movieId → stars)
-- State lives in `src/context/ratingContext.tsx` — wrapped with `<RatingProvider>` in `main.tsx`
-- Use `useRating()` hook to read/write ratings in any component
-- `StarRating` component (`src/common/StarRating/index.tsx`) handles both interactive and read-only display
-  - `size="sm" readOnly` on `MovieCard` — shows saved rating only, renders nothing if unrated
-  - `size="md"` (default) on the Detail page — fully interactive, click to set/remove
-- Storage helpers: `saveRatings` / `getRatings` in `src/utils/helper.ts`
